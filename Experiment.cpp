@@ -127,6 +127,7 @@ Result * Experiment::calc(long experiments) {
 				// reduction(+ : histogram)
 #pragma omp parallel for
 	for (long l = 0; l < experiments; l++) {
+		cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		int i = singleExperimentResult();
 #pragma omp atomic
