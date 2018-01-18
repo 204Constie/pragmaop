@@ -71,19 +71,21 @@ long Experiment::singleExperimentResult() {
 
 	// int seed = (unsigned)(random() * (omp_get_thread_num()+2));
 
-	struct plantSeed{
-		plantSeed(bool b){
-			int seed = (unsigned)(random() * (omp_get_thread_num()+2));
-			srand48_r(seed, &drand_Buffor);
-		}
-
-	};
-	plantSeed ps(true);
-
+	// struct plantSeed{
+	// 	plantSeed(bool b){
+	// 		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+	// 		srand48_r(seed, &drand_Buffor);
+	// 	}
+  //
+	// };
+	// plantSeed ps(true);
+	int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+	srand48_r(seed, &drand_Buffor);
 
   cout << "7 "  << endl;
 	// srand48_r(seed, &drand_Buffor);
-#pragma omp for private(ps)
+// #pragma omp for private(ps)
+#pragma omp for 
 	for (int i = 0; i < drawsNumber; i++) {
     cout << "11 "  << endl;
 		double result = 0;
