@@ -153,6 +153,7 @@ Result * Experiment::calc(long experiments) {
 
 
 // indeks to wartosc, histogram -> liczba wystapien
+	cout << "return" << endl;
 	return new Result(maxID, maxN, sum / values, values);
 }
 
