@@ -34,12 +34,16 @@ void show(Result *res) {
 }
 
 int main(void) {
+	cout << "run " << endl;
 
 	Experiment *ex = new Experiment(100, 50); // 50 kul ze 100
+	cout << "new ex" << endl;
 
 	initializeTimeLimit(CALC_TIME);
+	cout << "iit " << endl;
 
 	do {
+		cout << "--------------- " << endl;
 		show(ex->calc(CHUNK_SIZE));
 	} while (hasTimeToContinue());
 
