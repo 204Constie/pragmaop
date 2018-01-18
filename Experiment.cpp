@@ -116,6 +116,7 @@ long Experiment::singleExperimentResult() {
 }
 
 Result * Experiment::calc(long experiments) {
+	cout << "calc" << endl;
 
 // #pragma omp parallel
 // {
