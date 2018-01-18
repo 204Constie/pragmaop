@@ -43,7 +43,7 @@ int main(void) {
 	cout << "iit " << endl;
 
 	do {
-		cout << "--------------- " << endl;
+		cout << "88888888888888888888--------------- " << endl;
 		show(ex->calc(CHUNK_SIZE));
 	} while (hasTimeToContinue());
 

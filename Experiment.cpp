@@ -146,6 +146,7 @@ Result * Experiment::calc(long experiments) {
 				// reduction(+ : sum, values)
 #pragma omp parallel for
 	for (long idx = hmin; idx <= hmax; idx++) {
+		cout << "_-________------______------_____-----______-----_______------_________-------------" << endl;
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
