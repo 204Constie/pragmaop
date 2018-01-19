@@ -28,6 +28,9 @@ struct drand48_data drand_Buffor;
 int flag = 0;
 #pragma omp threadprivate(flag)
 
+bool *usedPerThread;
+#pragma omp threadprivate(usedPerThread)
+
 Experiment::Experiment(int balls, int drawsNumber) {
 	this->balls = balls;
 	this->drawsNumber = drawsNumber;
@@ -45,8 +48,10 @@ Experiment::Experiment(int balls, int drawsNumber) {
 	histogram = new long[hmax + 1];
 
 // each thread own one used array
+#pragma omp parallel
+{
 	usedPerThread = new bool[balls];
-	bool *usedPerThread = usedPerThread;
+}
 
 	for (long i = 0; i < hmax + 1; i++)
 		histogram[i] = 0;
@@ -90,7 +95,7 @@ long Experiment::singleExperimentResult() {
 		double resultp = 0;
 		drand48_r(&drand_Buffor, &resultp);
 
-		ball = 1 + (int) (((double) balls * result) / (1+1.0)); // rand losuje od 0 do RAND_MAX wlacznie
+		ball = 1 + (int) ((double) balls * result); // rand losuje od 0 do RAND_MAX wlacznie
 		// cout << "ball: " << ball << endl;
 
 		if (usedPerThread[ball - 1])
@@ -98,7 +103,7 @@ long Experiment::singleExperimentResult() {
 
 		p = Distribution::getProbability(i + 1, ball); // pobieramy prawdopodobienstwo wylosowania tej kuli
 
-		if ((resultp)/ (1+1.0) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
+		if (resultp < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
 				{
 #ifdef DEBUG_ON
 			cout << "Dodano kule o numerze " << ball << endl;

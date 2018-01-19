@@ -15,7 +15,7 @@ private:
 	long *histogram; // histogram
 	bool *used; // wektor pomocniczy przy losowaniu bez zwracania
 
-	bool *usedPerThread;
+	// bool *usedPerThread;
 
 	int drawsNumber; // liczba kulek
 	int balls; // liczba kulek
