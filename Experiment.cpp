@@ -130,7 +130,7 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
-#pragma omp parallel for
+#pragma omp parallel for private(maxN, maxID)
 	for (long idx = hmin; idx <= hmax; idx++) {
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
