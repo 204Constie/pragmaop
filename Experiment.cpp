@@ -107,7 +107,7 @@ long Experiment::singleExperimentResult() {
 		}
 	}
 
-	cout << "Suma = " << sum << endl;
+	// cout << "Suma = " << sum << endl;
 
 	return sum;
 }
