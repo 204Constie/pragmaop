@@ -178,6 +178,6 @@ Result * Experiment::calc(long experiments) {
 
 Experiment::~Experiment() {
 	delete[] histogram;
-	// delete[] used;
-	delete[] usedPerThread;
+	delete[] used;
+	// delete[] usedPerThread;
 }
