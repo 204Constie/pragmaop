@@ -102,7 +102,7 @@ long Experiment::singleExperimentResult() {
 		drand48_r(&drand_Buffor, &result);
     // cout << "12 "  << endl;
 		ball = 1 + (int) (((double) balls * result) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
-    cout << "ball " << ball  << endl;
+		cout << "RAND_MAX: " << RAND_MAX << endl;
 		if (usedPerThread[ball - 1])
 			continue;
 
