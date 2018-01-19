@@ -25,7 +25,7 @@ struct drand48_data drand_Buffor;
 #pragma omp threadprivate(drand_Buffor)
 
 int flag = 0;
-#pragma omp threadprivate(flag);
+#pragma omp threadprivate(flag)
 
 Experiment::Experiment(int balls, int drawsNumber) {
 	this->balls = balls;
