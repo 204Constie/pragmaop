@@ -130,18 +130,49 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
-#pragma omp parallel for shared(histogram, hmin, hmax)\
-				private(maxN, maxID, idx)
+	void findMax() {
+	   maxim = t[0];
+	   double local_max = maxim;
+	#pragma omp parallel firstprivate(local_max)
+	{
+	#pragma omp for
+	   for ( long i = 1; i < ITER; i++ )
+	     if ( t[i] > local_max ) local_max = t[i];
+
+	#pragma omp critical
+	{
+	     if ( local_max > maxim ) {
+				 maxim = local_max;
+			 }
+	} // critical
+	} // parallel
+	}
+
+	long local_maxN = maxN;
+	long local_maxID = maxID;
+#pragma omp parallel firstprivate(local_maxN, local_maxID)
+{
+#pragma omp for reduction(+: sun, values)
 	for (long idx = hmin; idx <= hmax; idx++) {
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
 		}
-#pragma omp atomic
-		sum += idx * histogram[idx];
-#pragma omp atomic
-		values += histogram[idx];
+
+	#pragma omp critical
+	{
+		if(local_maxN > maxN){
+			maxN = local_maxN;
+		}
+		if(local_maxID > maxID){
+			maxID = local_maxID;
+		}
 	}
+
+		sum += idx * histogram[idx];
+		values += histogram[idx];
+	}//for
+}//firstprivate
 
 
 // indeks to wartosc, histogram -> liczba wystapien
