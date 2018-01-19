@@ -123,7 +123,7 @@ long Experiment::singleExperimentResult() {
 		// cout << "6666666666666" << endl;
 	}
 
-///	cout << "Suma = " << sum << endl;
+	cout << "Suma = " << sum << endl;
 
 	return sum;
 }
@@ -160,7 +160,7 @@ Result * Experiment::calc(long experiments) {
 				// reduction(+ : sum, values)
 #pragma omp parallel for
 	for (long idx = hmin; idx <= hmax; idx++) {
-		cout << "_-________------______------_____-----______-----_______------_________-------------" << endl;
+		// cout << "_-________------______------_____-----______-----_______------_________-------------" << endl;
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
