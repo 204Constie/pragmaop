@@ -73,15 +73,15 @@ long Experiment::singleExperimentResult() {
   //
 	// };
 	// plantSeed ps(true);
-#pragma omp parallel
-{
+// #pragma omp parallel
+// {
 	if(flag == 0){
 		flag = 1;
 		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
 		cout << "seed: " << seed << endl;
 		srand48_r(seed, &drand_Buffor);
 	}
-}
+// }
 
 	for (int i = 0; i < drawsNumber; i++) {
 
@@ -129,24 +129,6 @@ Result * Experiment::calc(long experiments) {
 	long minN = experiments;
 	double sum = 0.0;
 	long values = 0;
-
-	// void findMax() {
-	//    maxim = t[0];
-	//    double local_max = maxim;
-	// #pragma omp parallel firstprivate(local_max)
-	// {
-	// #pragma omp for
-	//    for ( long i = 1; i < ITER; i++ )
-	//      if ( t[i] > local_max ) local_max = t[i];
-  //
-	// #pragma omp critical
-	// {
-	//      if ( local_max > maxim ) {
-	// 			 maxim = local_max;
-	// 		 }
-	// } // critical
-	// } // parallel
-	// }
 
 	long local_maxN = maxN;
 	long local_maxID = maxID;
