@@ -114,8 +114,7 @@ long Experiment::singleExperimentResult() {
 
 Result * Experiment::calc(long experiments) {
 	cout << "calc" << endl;
-#pragma omp parallel
-{
+
 #pragma omp parallel for
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
@@ -131,7 +130,8 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
-#pragma omp parallel for
+#pragma omp parallel for shared(histogram, hmin, hmax)\
+				private(maxN, maxID, idx)
 	for (long idx = hmin; idx <= hmax; idx++) {
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
@@ -142,7 +142,7 @@ Result * Experiment::calc(long experiments) {
 #pragma omp atomic
 		values += histogram[idx];
 	}
-}
+
 
 // indeks to wartosc, histogram -> liczba wystapien
 	cout << "sum: " << sum << " values: " << values << " maxID: " << maxID << " maxN: " << maxN << endl;
