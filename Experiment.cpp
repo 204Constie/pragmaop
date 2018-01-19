@@ -88,7 +88,8 @@ long Experiment::singleExperimentResult() {
 		double result = 0;
 		drand48_r(&drand_Buffor, &result);
 
-		ball = 1 + (int) (((double) balls * rand() ) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
+		ball = 1 + (int) (((double) balls * rand() ) / ( 1 + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
+		cout << "ball: " << ball << endl;
 
 		if (usedPerThread[ball - 1])
 			continue;
@@ -106,7 +107,7 @@ long Experiment::singleExperimentResult() {
 		}
 	}
 
-	cout << "Suma = " << sum << endl;
+	// cout << "Suma = " << sum << endl;
 
 	return sum;
 }
