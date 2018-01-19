@@ -102,7 +102,7 @@ long Experiment::singleExperimentResult() {
 		drand48_r(&drand_Buffor, &result);
     // cout << "12 "  << endl;
 		ball = 1 + (int) (((double) balls * result) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
-    // cout << "13 "  << endl;
+    cout << "ball " << ball  << endl;
 		if (usedPerThread[ball - 1])
 			continue;
 
@@ -116,14 +116,13 @@ long Experiment::singleExperimentResult() {
 			cout << "Dodano kule o numerze " << ball << endl;
 #endif
 			usedPerThread[ball - 1] = true;
-			cout << "ball: " << ball << endl;
 			sum += ball; // kule maja numery od 1 do balls wlacznie
 			i++;
 		}
 		// cout << "6666666666666" << endl;
 	}
 
-	cout << "Suma = " << sum << endl;
+	// cout << "Suma = " << sum << endl;
 
 	return sum;
 }
