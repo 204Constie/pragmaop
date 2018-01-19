@@ -77,10 +77,7 @@ long Experiment::singleExperimentResult() {
 {
 	if(flag == 0){
 		flag = 1;
-		// int seed = (unsigned)(random() * (omp_get_thread_num()+2));
-		struct timeval tf;
-		gettimeofday(&tf, NULL);
-		int seed = tf.tv_sec *1000 + tf.tv_usec * 0.001 + omp_get_thread_num();
+		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
 		cout << "seed: " << seed << endl;
 		srand48_r(seed, &drand_Buffor);
 	}
@@ -91,14 +88,14 @@ long Experiment::singleExperimentResult() {
 		double result = 0;
 		drand48_r(&drand_Buffor, &result);
 
-		ball = 1 + (int) (((double) balls * result ) / ( 1 + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
+		ball = 1 + (int) (((double) balls * result ) / ( 1 )); // rand losuje od 0 do RAND_MAX wlacznie
 
 		if (usedPerThread[ball - 1])
 			continue;
 
 		p = Distribution::getProbability(i + 1, ball); // pobieramy prawdopodobienstwo wylosowania tej kuli
 
-		if ((result / ( 1 + 1.0)) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
+		if ((result / ( 1 )) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
 				{
 #ifdef DEBUG_ON
 			cout << "Dodano kule o numerze " << ball << endl;
