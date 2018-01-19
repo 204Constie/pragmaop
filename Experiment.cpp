@@ -24,6 +24,9 @@ using namespace std;
 struct drand48_data drand_Buffor;
 #pragma omp threadprivate(drand_Buffor)
 
+int flag = 0;
+#pragma omp threadprivate(flag);
+
 Experiment::Experiment(int balls, int drawsNumber) {
 	this->balls = balls;
 	this->drawsNumber = drawsNumber;
@@ -71,21 +74,27 @@ long Experiment::singleExperimentResult() {
 
 	// int seed = (unsigned)(random() * (omp_get_thread_num()+2));
 
-	struct plantSeed{
-		plantSeed(bool b){
-			int seed = (unsigned)(random() * (omp_get_thread_num()+2));
-			srand48_r(seed, &drand_Buffor);
-		}
-
-	};
-	plantSeed ps(true);
-	// int seed = (unsigned)(random() * (omp_get_thread_num()+2));
-	// srand48_r(seed, &drand_Buffor);
+	// struct plantSeed{
+	// 	plantSeed(bool b){
+	// 		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+	// 		srand48_r(seed, &drand_Buffor);
+	// 	}
+  //
+	// };
+	// plantSeed ps(true);
+#pragma omp parallel
+{
+	if(flag == 0){
+		flag = 1;
+		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+		srand48_r(seed, &drand_Buffor);
+	}
+}
 
   // cout << "7 "  << endl;
 	// srand48_r(seed, &drand_Buffor);
-#pragma omp for private(ps)
-// #pragma omp for
+// #pragma omp for private(ps)
+#pragma omp for
 	for (int i = 0; i < drawsNumber; i++) {
     // cout << "11 "  << endl;
 		double result = 0;
