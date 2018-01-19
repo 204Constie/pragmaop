@@ -94,7 +94,7 @@ long Experiment::singleExperimentResult() {
   // cout << "7 "  << endl;
 	// srand48_r(seed, &drand_Buffor);
 // #pragma omp for private(ps)
-#pragma omp for
+// #pragma omp for
 	for (int i = 0; i < drawsNumber; i++) {
     // cout << "11 "  << endl;
 		double result = 0;
