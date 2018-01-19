@@ -39,16 +39,16 @@ Experiment::Experiment(int balls, int drawsNumber) {
 	cout << "Histogram min: " << hmin << " max: " << hmax << endl;
 
 	histogram = new long[hmax + 1];
-  cout << "1 "  << endl;
+  // cout << "1 "  << endl;
 // each thread own one used array
 	// used = new bool[balls];
 	usedPerThread = new bool[balls];
 	bool *usedPerThread = usedPerThread;
-  cout << "2 "  << endl;
+  // cout << "2 "  << endl;
 
 	for (long i = 0; i < hmax + 1; i++)
 		histogram[i] = 0;
-    cout << "3 " << endl;
+    // cout << "3 " << endl;
 }
 
 void Experiment::clearUsed() {
@@ -56,18 +56,18 @@ void Experiment::clearUsed() {
 	for (int i = 0; i < balls; i++)
 		usedPerThread[i] = false;
 		// used[i] = false;
-    cout << "4 "  << endl;
+    // cout << "4 "  << endl;
 }
 
 long Experiment::singleExperimentResult() {
 	long sum = 0;
 	int ball;
 	double p;
-  cout << "5 "  << endl;
+  // cout << "5 "  << endl;
 
 	clearUsed();
 
-  cout << "6 "  << endl;
+  // cout << "6 "  << endl;
 
 	// int seed = (unsigned)(random() * (omp_get_thread_num()+2));
 
@@ -87,19 +87,19 @@ long Experiment::singleExperimentResult() {
 // #pragma omp for private(ps)
 #pragma omp for
 	for (int i = 0; i < drawsNumber; i++) {
-    cout << "11 "  << endl;
+    // cout << "11 "  << endl;
 		double result = 0;
 		// drand48_r(drand_Buffor, &result);
 		drand48_r(&drand_Buffor, &result);
-    cout << "12 "  << endl;
+    // cout << "12 "  << endl;
 		ball = 1 + (int) (((double) balls * result) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
-    cout << "13 "  << endl;
+    // cout << "13 "  << endl;
 		if (usedPerThread[ball - 1])
 			continue;
 
-    cout << "21 "  << endl;
+    // cout << "21 "  << endl;
 		p = Distribution::getProbability(i + 1, ball); // pobieramy prawdopodobienstwo wylosowania tej kuli
-    cout << "22 "  << endl;
+    // cout << "22 "  << endl;
 
 		if ((result / ( RAND_MAX + 1.0)) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
 				{
