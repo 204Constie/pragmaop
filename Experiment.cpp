@@ -108,7 +108,7 @@ long Experiment::singleExperimentResult() {
     // cout << "12 "  << endl;
 
 		// cout << "result: " << result << endl;
-		double hh = ((double) balls * result) / ( RAND_MAX + 1.0));
+		double hh = (double) balls * result) / ( RAND_MAX + 1.0);
 		cout << "balls: " << hh << endl;
 		ball = 1 + (int) (((double) balls * result) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
 
