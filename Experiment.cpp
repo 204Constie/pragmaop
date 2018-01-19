@@ -130,23 +130,23 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
-	void findMax() {
-	   maxim = t[0];
-	   double local_max = maxim;
-	#pragma omp parallel firstprivate(local_max)
-	{
-	#pragma omp for
-	   for ( long i = 1; i < ITER; i++ )
-	     if ( t[i] > local_max ) local_max = t[i];
-
-	#pragma omp critical
-	{
-	     if ( local_max > maxim ) {
-				 maxim = local_max;
-			 }
-	} // critical
-	} // parallel
-	}
+	// void findMax() {
+	//    maxim = t[0];
+	//    double local_max = maxim;
+	// #pragma omp parallel firstprivate(local_max)
+	// {
+	// #pragma omp for
+	//    for ( long i = 1; i < ITER; i++ )
+	//      if ( t[i] > local_max ) local_max = t[i];
+  //
+	// #pragma omp critical
+	// {
+	//      if ( local_max > maxim ) {
+	// 			 maxim = local_max;
+	// 		 }
+	// } // critical
+	// } // parallel
+	// }
 
 	long local_maxN = maxN;
 	long local_maxID = maxID;
