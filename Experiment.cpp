@@ -155,6 +155,7 @@ Result * Experiment::calc(long experiments) {
 
 		sum += idx * histogram[idx];
 		values += histogram[idx];
+		cout << "sum: " << sum << " values: " << values << endl;
 	}//for
 }//firstprivate
 
