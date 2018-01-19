@@ -143,6 +143,7 @@ Result * Experiment::calc(long experiments) {
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
+			cout << "--------------------------------------------------------" << endl;
 			cout << "idx: " << idx << " maxN: " << maxN << endl;
 		}
 
