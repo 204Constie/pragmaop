@@ -123,6 +123,7 @@ Result * Experiment::calc(long experiments) {
 	}
 
 	cout << "--------------------------------------------------------" << endl;
+	cout << "hmin: " << hmin << " hmax: " << hmax << endl;
 	cout << "hmin: " << histogram[hmin] << " hmax: " << histogram[hmax] << endl;
 
 	long maxID = 0;
