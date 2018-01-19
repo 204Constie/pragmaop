@@ -146,7 +146,10 @@ Result * Experiment::calc(long experiments) {
 			cout << "--------------------------------------------------------" << endl;
 			cout << "idx: " << idx << " maxN: " << maxN << endl;
 		}
-
+		sum += idx * histogram[idx];
+		values += histogram[idx];
+		// cout << "sum: " << sum << " values: " << values << endl;
+	}//for
 	#pragma omp critical
 	{
 		if(local_maxN > maxN){
@@ -155,10 +158,7 @@ Result * Experiment::calc(long experiments) {
 		}
 	}
 
-		sum += idx * histogram[idx];
-		values += histogram[idx];
-		// cout << "sum: " << sum << " values: " << values << endl;
-	}//for
+
 }//firstprivate
 
 
