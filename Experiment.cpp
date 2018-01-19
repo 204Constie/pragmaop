@@ -86,7 +86,10 @@ long Experiment::singleExperimentResult() {
 {
 	if(flag == 0){
 		flag = 1;
-		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+		// int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+		struct timeval tf;
+		gettimeofday(&tf, NULL);
+		int seed = tf.tv_sec *1000 + tf.tv_usec * 0.001 + omp_get_thread_num();
 		cout << "seed: " << seed << endl;
 		srand48_r(seed, &drand_Buffor);
 	}
