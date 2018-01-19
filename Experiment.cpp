@@ -90,7 +90,7 @@ long Experiment::singleExperimentResult() {
 		double resultp = 0;
 		drand48_r(&drand_Buffor, &resultp);
 
-		ball = 1 + (int) ((double) balls * result ); // rand losuje od 0 do RAND_MAX wlacznie
+		ball = 1 + (int) (((double) balls * result) / (1+1.0)); // rand losuje od 0 do RAND_MAX wlacznie
 		// cout << "ball: " << ball << endl;
 
 		if (usedPerThread[ball - 1])
@@ -98,7 +98,7 @@ long Experiment::singleExperimentResult() {
 
 		p = Distribution::getProbability(i + 1, ball); // pobieramy prawdopodobienstwo wylosowania tej kuli
 
-		if (resultp < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
+		if ((resultp)/ (1+1.0) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
 				{
 #ifdef DEBUG_ON
 			cout << "Dodano kule o numerze " << ball << endl;
@@ -120,6 +120,7 @@ Result * Experiment::calc(long experiments) {
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		int i = singleExperimentResult();
+		cout << i << endl;
 #pragma omp atomic
 		histogram[i]++;
 	}
@@ -135,16 +136,13 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
-// 	long local_maxN = maxN;
-// 	long local_maxID = maxID;
-// #pragma omp parallel firstprivate(local_maxN, local_maxID)
-#pragma omp parallel
-{
 	long local_maxN = maxN;
 	long local_maxID = maxID;
+#pragma omp parallel firstprivate(local_maxN, local_maxID)
+{
 #pragma omp for reduction(+: sum, values)
 	for (long idx = hmin; idx <= hmax; idx++) {
-		cout << "idx: " << idx << " histogram[idx]: " << histogram[idx] << endl;
+		// cout << "idx: " << idx << " histogram[idx]: " << histogram[idx] << endl;
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
