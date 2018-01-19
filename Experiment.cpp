@@ -143,6 +143,7 @@ Result * Experiment::calc(long experiments) {
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
+			cout << "idx: " << idx << " maxN: " << maxN << endl;
 		}
 
 	#pragma omp critical
@@ -155,7 +156,7 @@ Result * Experiment::calc(long experiments) {
 
 		sum += idx * histogram[idx];
 		values += histogram[idx];
-		cout << "sum: " << sum << " values: " << values << endl;
+		// cout << "sum: " << sum << " values: " << values << endl;
 	}//for
 }//firstprivate
 
