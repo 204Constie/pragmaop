@@ -122,7 +122,7 @@ Result * Experiment::calc(long experiments) {
 		histogram[i]++;
 	}
 
-	cout << "calc" << histogram[80] << endl;
+	// cout << "calc" << histogram[80] << endl;
 
 	long maxID = 0;
 	long minID = 0;
@@ -131,10 +131,11 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
+
+#pragma omp parallel
+{
 	long local_maxN = maxN;
 	long local_maxID = maxID;
-#pragma omp parallel firstprivate(local_maxN, local_maxID)
-{
 #pragma omp for
 	for (long idx = hmin; idx <= hmax; idx++) {
 		if (maxN < histogram[idx]) {
