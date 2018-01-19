@@ -111,6 +111,7 @@ long Experiment::singleExperimentResult() {
 		double hh = ((double) balls * result) / ( RAND_MAX + 1.0);
 		int jj = (int) hh;
 		cout << "balls: " << hh << endl;
+		cout << "balls: " << jj << endl;
 		ball = 1 + (int) (((double) balls * result) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
 
 		if (usedPerThread[ball - 1])
