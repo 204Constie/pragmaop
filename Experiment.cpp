@@ -133,6 +133,7 @@ Result * Experiment::calc(long experiments) {
 #pragma omp atomic
 		histogram[i]++;
 	}
+	cout << "here " << endl;
 // }
 
 	long maxID = 0;
@@ -141,6 +142,8 @@ Result * Experiment::calc(long experiments) {
 	long minN = experiments;
 	double sum = 0.0;
 	long values = 0;
+
+	cout << "vars " << endl;
 
 // for shared(maxN, maxID, hmin, hmax, histogram, sum) private(idx)\
 				// reduction(+ : sum, values)
