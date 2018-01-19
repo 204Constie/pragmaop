@@ -88,7 +88,7 @@ long Experiment::singleExperimentResult() {
 		double result = 0;
 		drand48_r(&drand_Buffor, &result);
 
-		ball = 1 + (int) (((double) balls * result ) / ( 1 + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
+		ball = 1 + (int) ((double) balls * result ); // rand losuje od 0 do RAND_MAX wlacznie
 		// cout << "ball: " << ball << endl;
 
 		if (usedPerThread[ball - 1])
@@ -96,7 +96,7 @@ long Experiment::singleExperimentResult() {
 
 		p = Distribution::getProbability(i + 1, ball); // pobieramy prawdopodobienstwo wylosowania tej kuli
 
-		if ((result / ( 1 + 1.0)) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
+		if (result < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
 				{
 #ifdef DEBUG_ON
 			cout << "Dodano kule o numerze " << ball << endl;
