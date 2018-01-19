@@ -133,7 +133,7 @@ long Experiment::singleExperimentResult() {
 		// cout << "6666666666666" << endl;
 	}
 
-	// cout << "Suma = " << sum << endl;
+	cout << "Suma = " << sum << endl;
 
 	return sum;
 }
