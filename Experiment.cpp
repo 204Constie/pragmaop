@@ -107,6 +107,7 @@ long Experiment::singleExperimentResult() {
 			cout << "Dodano kule o numerze " << ball << endl;
 #endif
 			usedPerThread[ball - 1] = true;
+			cout << "ball: " << ball << endl;
 			sum += ball; // kule maja numery od 1 do balls wlacznie
 			i++;
 		}
@@ -130,7 +131,7 @@ Result * Experiment::calc(long experiments) {
 		// cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		int i = singleExperimentResult();
-		cout << "i: " << i << endl;
+		// cout << "i: " << i << endl;
 #pragma omp atomic
 		histogram[i]++;
 	}
