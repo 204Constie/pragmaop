@@ -122,7 +122,8 @@ Result * Experiment::calc(long experiments) {
 		histogram[i]++;
 	}
 
-	// cout << "calc" << histogram[80] << endl;
+	cout << "--------------------------------------------------------" << endl;
+	cout << "hmin: " << histogram[hmin] << " hmax: " << histogram[hmax] << endl;
 
 	long maxID = 0;
 	long minID = 0;
@@ -143,8 +144,8 @@ Result * Experiment::calc(long experiments) {
 		if (maxN < histogram[idx]) {
 			maxN = histogram[idx];
 			maxID = idx;
-			cout << "--------------------------------------------------------" << endl;
-			cout << "idx: " << idx << " maxN: " << maxN << endl;
+			// cout << "--------------------------------------------------------" << endl;
+			// cout << "idx: " << idx << " maxN: " << maxN << endl;
 		}
 		sum += idx * histogram[idx];
 		values += histogram[idx];
