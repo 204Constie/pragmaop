@@ -102,6 +102,7 @@ long Experiment::singleExperimentResult() {
 			cout << "Dodano kule o numerze " << ball << endl;
 #endif
 			usedPerThread[ball - 1] = true;
+#pragma omp atomic
 			sum += ball; // kule maja numery od 1 do balls wlacznie
 			i++;
 		}
