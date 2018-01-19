@@ -135,9 +135,9 @@ Result * Experiment::calc(long experiments) {
 // 	long local_maxID = maxID;
 // #pragma omp parallel firstprivate(local_maxN, local_maxID)
 #pragma omp parallel
+{
 	long local_maxN = maxN;
 	long local_maxID = maxID;
-{
 #pragma omp for reduction(+: sum, values)
 	for (long idx = hmin; idx <= hmax; idx++) {
 		if (maxN < histogram[idx]) {
