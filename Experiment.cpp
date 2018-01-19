@@ -142,12 +142,12 @@ Result * Experiment::calc(long experiments) {
 #pragma omp atomic
 		values += histogram[idx];
 	}
-
+}
 
 // indeks to wartosc, histogram -> liczba wystapien
 	cout << "sum: " << sum << " values: " << values << " maxID: " << maxID << " maxN: " << maxN << endl;
 	return new Result(maxID, maxN, sum / values, values);
-}
+
 }
 
 Experiment::~Experiment() {
