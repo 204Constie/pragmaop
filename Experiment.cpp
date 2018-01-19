@@ -113,7 +113,6 @@ long Experiment::singleExperimentResult() {
 }
 
 Result * Experiment::calc(long experiments) {
-	cout << "calc" << endl;
 
 #pragma omp parallel for
 	for (long l = 0; l < experiments; l++) {
@@ -122,6 +121,8 @@ Result * Experiment::calc(long experiments) {
 #pragma omp atomic
 		histogram[i]++;
 	}
+
+	cout << "calc" << histogram[80] << endl;
 
 	long maxID = 0;
 	long minID = 0;
