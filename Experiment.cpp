@@ -114,7 +114,8 @@ long Experiment::singleExperimentResult() {
 
 Result * Experiment::calc(long experiments) {
 	cout << "calc" << endl;
-#pragma omp parallel {
+#pragma omp parallel
+{
 #pragma omp parallel for
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
