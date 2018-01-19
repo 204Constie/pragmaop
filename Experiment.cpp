@@ -87,6 +87,7 @@ long Experiment::singleExperimentResult() {
 	if(flag == 0){
 		flag = 1;
 		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
+		cout << "seed: " << seed << endl;
 		srand48_r(seed, &drand_Buffor);
 	}
 }
@@ -102,8 +103,8 @@ long Experiment::singleExperimentResult() {
 		drand48_r(&drand_Buffor, &result);
     // cout << "12 "  << endl;
 
-		cout << "result: " << result << endl;
-		cout << "balls: " << balls << endl;
+		// cout << "result: " << result << endl;
+		// cout << "balls: " << balls << endl;
 		ball = 1 + (int) (((double) balls * result) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
 
 		if (usedPerThread[ball - 1])
