@@ -125,7 +125,7 @@ Result * Experiment::calc(long experiments) {
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		int i = singleExperimentResult();
-		cout << i << endl;
+		// cout << i << endl;
 #pragma omp atomic
 		histogram[i]++;
 	}
