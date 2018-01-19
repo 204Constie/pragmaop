@@ -108,11 +108,11 @@ long Experiment::singleExperimentResult() {
     // cout << "12 "  << endl;
 
 		// cout << "result: " << result << endl;
-		double hh = ((double) balls * result) / ( RAND_MAX + 1.0);
+		double hh = ((double) balls * result) / ( 1 + 1.0);
 		double jj = result;
-		cout << "result: " << jj << endl;
+		cout << "result: " << hh << endl;
 		// cout << "balls: " << jj << endl;
-		ball = 1 + (int) (((double) balls * result * 1e9) / ( RAND_MAX + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
+		ball = 1 + (int) (((double) balls * result ) / ( 1 + 1.0)); // rand losuje od 0 do RAND_MAX wlacznie
 
 		if (usedPerThread[ball - 1])
 			continue;
@@ -121,7 +121,7 @@ long Experiment::singleExperimentResult() {
 		p = Distribution::getProbability(i + 1, ball); // pobieramy prawdopodobienstwo wylosowania tej kuli
     // cout << "22 "  << endl;
 
-		if ((result / ( RAND_MAX + 1.0)) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
+		if ((result / ( 1 + 1.0)) < p) // akceptacja wyboru kuli z zadanym prawdopodobienstwem
 				{
 #ifdef DEBUG_ON
 			cout << "Dodano kule o numerze " << ball << endl;
