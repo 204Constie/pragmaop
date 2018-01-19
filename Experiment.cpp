@@ -40,7 +40,7 @@ Experiment::Experiment(int balls, int drawsNumber) {
 
 	for (int i = 0; i < drawsNumber; i++) {
 		hmax += balls - i;
-		hmin += i + 1; // 1 + 2 + 3 + ... liczba losowan
+		// hmin += i + 1; // 1 + 2 + 3 + ... liczba losowan
 	}
 
 	cout << "Histogram min: " << hmin << " max: " << hmax << endl;
@@ -130,7 +130,7 @@ Result * Experiment::calc(long experiments) {
 		histogram[i]++;
 	}
 
-	// cout << "--------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------" << endl;
 	// cout << "hmin: " << hmin << " hmax: " << hmax << endl;
 	// cout << "hmin: " << histogram[hmin] << " hmax: " << histogram[hmax] << endl;
 
