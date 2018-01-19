@@ -13,6 +13,7 @@
 #include<iostream>
 #include <omp.h>
 #include <stdio.h>
+#include <sys/time.h>
 
 #include "Experiment.h"
 #include "Distribution.h"
