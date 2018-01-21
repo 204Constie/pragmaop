@@ -139,8 +139,8 @@ Result * Experiment::calc(long experiments) {
 	double sum = 0.0;
 	long values = 0;
 
-	long local_maxN = maxN;
-	long local_maxID = maxID;
+	long local_maxN = 0;
+	long local_maxID = 0;
 #pragma omp parallel firstprivate(local_maxN, local_maxID)
 {
 #pragma omp for reduction(+: sum, values)
