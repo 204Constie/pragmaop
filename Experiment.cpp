@@ -119,12 +119,12 @@ long Experiment::singleExperimentResult() {
 
 Result * Experiment::calc(long experiments) {
 
-#pragma omp parallel for
+#pragma omp parallel for schedule(dynamic)
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		long i = singleExperimentResult();
 		// cout << i << endl;
-#pragma omp atomic update
+#pragma omp atomic
 		histogram[i]++;
 	}
 
