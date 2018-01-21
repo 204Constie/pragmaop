@@ -25,7 +25,7 @@ using namespace std;
 struct drand48_data drand_Buffor;
 #pragma omp threadprivate(drand_Buffor)
 
-int flag = 0;
+bool flag = true;
 #pragma omp threadprivate(flag)
 
 bool *usedPerThread;
@@ -78,15 +78,13 @@ long Experiment::singleExperimentResult() {
   //
 	// };
 	// plantSeed ps(true);
-// #pragma omp parallel
-// {
-	if(flag == 0){
-		flag = 1;
+	
+	if(flag){
+		flag = false;
 		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
 		cout << "seed: " << seed << endl;
 		srand48_r(seed, &drand_Buffor);
 	}
-// }
 
 	for (int i = 0; i < drawsNumber; i++) {
 

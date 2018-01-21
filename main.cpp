@@ -35,7 +35,7 @@ void show(Result *res) {
 
 int main(void) {
 
-	Experiment *ex = new Experiment(100, 50); // 50 kul ze 100
+	Experiment *ex = new Experiment(100, 25); // 25 kul ze 100
 
 	initializeTimeLimit(CALC_TIME);
 
