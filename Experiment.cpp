@@ -146,9 +146,9 @@ Result * Experiment::calc(long experiments) {
 #pragma omp for reduction(+: sum, values)
 	for (long idx = hmin; idx <= hmax; idx++) {
 		// cout << "idx: " << idx << " histogram[idx]: " << histogram[idx] << endl;
-		if (maxN < histogram[idx]) {
-			maxN = histogram[idx];
-			maxID = idx;
+		if (local_maxN < histogram[idx]) {
+			local_maxN = histogram[idx];
+			local_maxID = idx;
 			// cout << "--------------------------------------------------------" << endl;
 			// cout << "idx: " << idx << " maxN: " << maxN << endl;
 		}
