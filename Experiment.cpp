@@ -40,7 +40,7 @@ Experiment::Experiment(int balls, int drawsNumber) {
 
 	for (int i = 0; i < drawsNumber; i++) {
 		hmax += balls - i;
-		// hmin += i + 1; // 1 + 2 + 3 + ... liczba losowan
+		hmin += i + 1; // 1 + 2 + 3 + ... liczba losowan
 	}
 
 	cout << "Histogram min: " << hmin << " max: " << hmax << endl;
@@ -78,7 +78,7 @@ long Experiment::singleExperimentResult() {
   //
 	// };
 	// plantSeed ps(true);
-	
+
 	if(flag){
 		flag = false;
 		int seed = (unsigned)(random() * (omp_get_thread_num()+2));
