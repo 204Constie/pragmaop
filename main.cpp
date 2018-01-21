@@ -7,8 +7,8 @@
 using namespace std;
 
 double timeLimit;
-const long CALC_TIME = 5000;
-const long CHUNK_SIZE = 1;
+const long CALC_TIME = 15000;
+const long CHUNK_SIZE = 5000;
 
 bool hasTimeToContinue() {
 	struct timeval tf;
@@ -35,7 +35,7 @@ void show(Result *res) {
 
 int main(void) {
 
-	Experiment *ex = new Experiment(5000000, 1);
+	Experiment *ex = new Experiment(100, 25); // 25 kul ze 100
 
 	initializeTimeLimit(CALC_TIME);
 
