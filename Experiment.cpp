@@ -124,7 +124,7 @@ Result * Experiment::calc(long experiments) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		long i = singleExperimentResult();
 		// cout << i << endl;
-#pragma omp atomic
+#pragma omp atomic update
 		histogram[i]++;
 	}
 
