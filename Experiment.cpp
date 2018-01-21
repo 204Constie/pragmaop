@@ -130,7 +130,7 @@ Result * Experiment::calc(long experiments) {
 
 	// cout << "--------------------------------------------------------" << endl;
 	// cout << "hmin: " << hmin << " hmax: " << hmax << endl;
-	// cout << "hmin: " << histogram[hmin] << " hmax: " << histogram[hmax] << endl;
+	cout << "hmin: " << histogram[hmin+10] << " hmax: " << histogram[hmax-10] << endl;
 
 	long maxID = 0;
 	long minID = 0;
