@@ -122,7 +122,7 @@ Result * Experiment::calc(long experiments) {
 #pragma omp parallel for
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
-		int i = singleExperimentResult();
+		long i = singleExperimentResult();
 		// cout << i << endl;
 #pragma omp atomic
 		histogram[i]++;
