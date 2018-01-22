@@ -108,7 +108,7 @@ long Experiment::singleExperimentResult() {
 #endif
 			usedPerThread[ball - 1] = true;
 			sum += ball; // kule maja numery od 1 do balls wlacznie
-			i++;
+			// i++;
 		}
 	}
 
@@ -119,7 +119,7 @@ long Experiment::singleExperimentResult() {
 
 Result * Experiment::calc(long experiments) {
 
-#pragma omp parallel for schedule(dynamic)
+#pragma omp parallel for
 	for (long l = 0; l < experiments; l++) {
 		// i = singleExperimentResult() i pragma omp atomic zeby zabezpieczyc histogram
 		long i = singleExperimentResult();
