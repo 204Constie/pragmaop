@@ -86,7 +86,7 @@ long Experiment::singleExperimentResult() {
 		srand48_r(seed, &drand_Buffor);
 	}
 
-	for (int i = 0; i < drawsNumber; i++) {
+	for (int i = 0; i < drawsNumber;) {
 
 		double result = 0;
 		drand48_r(&drand_Buffor, &result);
@@ -108,7 +108,7 @@ long Experiment::singleExperimentResult() {
 #endif
 			usedPerThread[ball - 1] = true;
 			sum += ball; // kule maja numery od 1 do balls wlacznie
-			// i++;
+			i++;
 		}
 	}
 
