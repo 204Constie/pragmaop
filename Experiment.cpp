@@ -48,10 +48,10 @@ Experiment::Experiment(int balls, int drawsNumber) {
 	histogram = new long[hmax + 1];
 
 // each thread own one used array
-// #pragma omp parallel
-// {
+#pragma omp parallel
+{
 	usedPerThread = new bool[balls];
-// }
+}
 
 	for (long i = 0; i < hmax + 1; i++)
 		histogram[i] = 0;
